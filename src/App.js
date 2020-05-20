@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Items from './components/items';
 import Header from './components/header';
 
-function App() {
-    const [items, setItems] = useState([
+const App = () => {
+    const [ items, setItems ] = useState([
         {
             id: uuidv4(),
             text: "Beef",
@@ -41,10 +41,10 @@ function App() {
     }
 
     return (
-        <React.Fragment>
+        <>
             <Header onCreate={onItemCreate}/>
             <Items items={items} onDelete={onItemDelete} onEdit={onItemEdit}/>
-        </React.Fragment>
+        </>
     )
 }
 

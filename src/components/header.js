@@ -3,8 +3,8 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 import AddItem from "./additem";
 
-function Header(props) {
-    const {onCreate} = props;
+const Header = (props) => {
+    const { onCreate } = props;
     const onAddItem = (item) => {
         onCreate(item);
     }

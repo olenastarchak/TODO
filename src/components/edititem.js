@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
-function EditItem(props) {
+const EditItem = (props) => {
     const { onEdit, item } = props;
     const [ open, setOpen ] = useState(false);
+    const { id, text, description, weight } = item;
     const [ value, setValue ] = useState({
-        id:item.id,
-        text:item.text,
-        description:item.description,
-        weight:item.weight
+        id,
+        text,
+        description,
+        weight
     });
 
     const handleClickOpen = () => {
@@ -21,6 +22,7 @@ function EditItem(props) {
     };
 
     const handleChanges = (e) => {
+        // const { name, value } = e.target;
         setValue({
             ...value,
             [e.target.name]: e.target.value
@@ -33,7 +35,7 @@ function EditItem(props) {
     }
 
     return (
-        <React.Fragment>
+        <>
             <Button onClick={handleClickOpen}>
                 <EditIcon style={{ padding: 15, fontSize: 30 }}></EditIcon>
             </Button>
@@ -79,7 +81,7 @@ function EditItem(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </React.Fragment>
+        </>
     )
 }
 

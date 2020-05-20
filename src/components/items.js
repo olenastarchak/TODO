@@ -4,7 +4,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import EditItem from "./edititem";
 
-function Items(props) {
+const Items = (props) => {
    const { items, onDelete, onEdit } = props;
 
     return (

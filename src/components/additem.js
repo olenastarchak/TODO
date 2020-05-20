@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 
-function AddItem(props) {
+const AddItem = (props) => {
     const { onItemCreate } = props;
     const [ open, setOpen ] = useState(false);
     const [ value, setValue ] = useState({id:'', text:'', description:'', weight:''});
@@ -17,6 +17,7 @@ function AddItem(props) {
     };
 
     const handleChanges = (e) => {
+        // const { name, value } = e.target;
         setValue({
             ...value,
             id:uuidv4(),
@@ -31,7 +32,7 @@ function AddItem(props) {
     }
 
     return (
-        <React.Fragment>
+        <>
             <Button onClick={handleClickOpen}>
                 <AddCircleOutlinedIcon></AddCircleOutlinedIcon>
             </Button>
@@ -77,7 +78,7 @@ function AddItem(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </React.Fragment>
+        </>
     )
 }
 
