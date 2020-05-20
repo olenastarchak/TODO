@@ -22,10 +22,10 @@ const EditItem = (props) => {
     };
 
     const handleChanges = (e) => {
-        // const { name, value } = e.target;
+        const { name, value: targetValue } = e.target;
         setValue({
             ...value,
-            [e.target.name]: e.target.value
+            [name]: targetValue
         })
     }
 
