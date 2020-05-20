@@ -17,7 +17,6 @@ const AddItem = (props) => {
     };
 
     const handleChanges = (e) => {
-        // const { name, value } = e.target;
         setValue({
             ...value,
             id:uuidv4(),
