@@ -5,20 +5,12 @@ import EditIcon from "@material-ui/icons/Edit";
 const EditItem = (props) => {
     const { onEdit, item } = props;
     const [ open, setOpen ] = useState(false);
-    const { id, text, description, weight } = item;
     const [ value, setValue ] = useState({
-        id,
-        text,
-        description,
-        weight
+        ...item
     });
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
+    const handleModal = (boolean) => {
+        setOpen(boolean);
     };
 
     const handleChanges = (e) => {
@@ -34,14 +26,19 @@ const EditItem = (props) => {
         setOpen(false);
     }
 
+    const editIconStyle = {
+        padding: 15,
+        fontSize: 30
+    }
+
     return (
         <>
-            <Button onClick={handleClickOpen}>
-                <EditIcon style={{ padding: 15, fontSize: 30 }}></EditIcon>
+            <Button onClick={() => handleModal(true)}>
+                <EditIcon style={editIconStyle}></EditIcon>
             </Button>
             <Dialog
                 open={open}
-                onClose={handleClose}>
+                onClose={() => handleModal(false)}>
                 <DialogTitle>
                     Edit dish
                 </DialogTitle>
@@ -76,7 +73,7 @@ const EditItem = (props) => {
                     <Button onClick={onFormSubmit} color="primary">
                         Ok
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={() => handleModal(false)} color="primary">
                         Cancel
                     </Button>
                 </DialogActions>

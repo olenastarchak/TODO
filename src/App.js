@@ -31,13 +31,13 @@ const App = () => {
     }
 
     const onItemDelete = (id) => {
-        setItems([...items.filter(item => item.id !== id)]);
+        setItems(items.filter(item => item.id !== id));
     }
 
-    const onItemEdit = (editeditem) => {
-        setItems([...items.map(
-            item => item.id === editeditem.id ? editeditem : item
-        )]);
+    const onItemEdit = (itemToEdit) => {
+        setItems(items.map(
+            item => item.id === itemToEdit.id ? itemToEdit : item
+        ));
     }
 
     return (

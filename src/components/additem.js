@@ -8,11 +8,11 @@ const AddItem = (props) => {
     const [ open, setOpen ] = useState(false);
     const [ value, setValue ] = useState({id:'', text:'', description:'', weight:''});
 
-    const handleClickOpen = () => {
+    const handleOpenModal = () => {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleCloseModal = () => {
         setOpen(false);
     };
 
@@ -33,12 +33,12 @@ const AddItem = (props) => {
 
     return (
         <>
-            <Button onClick={handleClickOpen}>
+            <Button onClick={handleOpenModal}>
                 <AddCircleOutlinedIcon></AddCircleOutlinedIcon>
             </Button>
             <Dialog
                 open={open}
-                onClose={handleClose}>
+                onClose={handleCloseModal}>
                 <DialogTitle>
                     Create new dish
                 </DialogTitle>
@@ -73,7 +73,7 @@ const AddItem = (props) => {
                     <Button onClick={onFormSubmit} color="primary">
                         Ok
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleCloseModal} color="primary">
                         Cancel
                     </Button>
                 </DialogActions>

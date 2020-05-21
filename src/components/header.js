@@ -3,19 +3,14 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 import AddItem from "./additem";
 
-const Header = (props) => {
-    const { onCreate } = props;
-    const onAddItem = (item) => {
-        onCreate(item);
-    }
-
+const Header = ({ onCreate }) => {
     return (
         <AppBar position='static'>
             <Toolbar>
                 <Typography variant='h4'>
                     Menu
                 </Typography>
-                <AddItem onItemCreate={onAddItem}/>
+                <AddItem onItemCreate={onCreate}/>
             </Toolbar>
         </AppBar>
     )
