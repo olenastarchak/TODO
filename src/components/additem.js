@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 
-const AddItem = (props) => {
-    const { onItemCreate } = props;
+const AddItem = ({ onItemCreate }) => {
     const [ open, setOpen ] = useState(false);
     const [ value, setValue ] = useState({id:'', text:'', description:'', weight:''});
 

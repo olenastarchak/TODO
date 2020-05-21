@@ -4,9 +4,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import EditItem from "./edititem";
 
-const Items = (props) => {
-   const { items, onDelete, onEdit } = props;
-
+const Items = ({ items, onDelete, onEdit }) => {
     const gridStyle = {
         padding: 20
     }

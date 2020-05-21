@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
-const EditItem = (props) => {
-    const { onEdit, item } = props;
+const EditItem = ({ onEdit, item }) => {
     const [ open, setOpen ] = useState(false);
     const [ value, setValue ] = useState({
         ...item
