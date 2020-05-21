@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ErrorMessage } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
@@ -6,13 +7,10 @@ import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 const AddItem = ({ onItemCreate }) => {
     const [ open, setOpen ] = useState(false);
     const [ value, setValue ] = useState({id:'', text:'', description:'', weight:''});
+    const { errors, register, handleSubmit } = useForm();
 
-    const handleOpenModal = () => {
-        setOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setOpen(false);
+    const handleModal = (boolean) => {
+        setOpen(boolean);
     };
 
     const handleChanges = (e) => {
@@ -32,12 +30,12 @@ const AddItem = ({ onItemCreate }) => {
 
     return (
         <>
-            <Button onClick={handleOpenModal}>
+            <Button onClick={() => handleModal(true)}>
                 <AddCircleOutlinedIcon></AddCircleOutlinedIcon>
             </Button>
             <Dialog
                 open={open}
-                onClose={handleCloseModal}>
+                onClose={() => handleModal(false)}>
                 <DialogTitle>
                     Create new dish
                 </DialogTitle>
@@ -49,30 +47,36 @@ const AddItem = ({ onItemCreate }) => {
                         name="text"
                         value={value.text}
                         onChange={handleChanges}
+                        inputRef={register({ required: "Name is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="text" />
                     <TextField
                         margin="normal"
                         label="Description"
                         name="description"
                         value={value.description}
                         onChange={handleChanges}
+                        inputRef={register({ required: "Description is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="description" />
                     <TextField
                         margin="normal"
                         label="Weight"
                         name="weight"
                         value={value.weight}
                         onChange={handleChanges}
+                        inputRef={register({ required: "Weight is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="weight" />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={onFormSubmit} color="primary">
+                    <Button onClick={handleSubmit(onFormSubmit)} color="primary">
                         Ok
                     </Button>
-                    <Button onClick={handleCloseModal} color="primary">
+                    <Button onClick={() => handleModal(false)} color="primary">
                         Cancel
                     </Button>
                 </DialogActions>

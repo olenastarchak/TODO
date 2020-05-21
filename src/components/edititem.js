@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ErrorMessage } from 'react-hook-form';
 import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
@@ -7,6 +8,7 @@ const EditItem = ({ onEdit, item }) => {
     const [ value, setValue ] = useState({
         ...item
     });
+    const { errors, register, handleSubmit } = useForm();
 
     const handleModal = (boolean) => {
         setOpen(boolean);
@@ -49,27 +51,33 @@ const EditItem = ({ onEdit, item }) => {
                         name="text"
                         value={value.text}
                         onChange={handleChanges}
+                        inputRef={register({ required: "This is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="text" />
                     <TextField
                         margin="normal"
                         label="Description"
                         name="description"
                         value={value.description}
                         onChange={handleChanges}
+                        inputRef={register({ required: "This is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="description" />
                     <TextField
                         margin="normal"
                         label="Weight"
                         name="weight"
                         value={value.weight}
                         onChange={handleChanges}
+                        inputRef={register({ required: "This is required" })}
                         fullWidth
                     />
+                    <ErrorMessage errors={errors} name="weight" />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={onFormSubmit} color="primary">
+                    <Button onClick={handleSubmit(onFormSubmit)} color="primary">
                         Ok
                     </Button>
                     <Button onClick={() => handleModal(false)} color="primary">
